@@ -29,9 +29,17 @@ Enemy.prototype.render = function() {
 let Player = function(x, y) {
   this.x = x;
   this.y = y;
+  this.sprite = 'images/char-boy.png';
 }
 // This class requires an update(), render() and
 // a handleInput() method.
+Player.prototype.update = function() {
+
+};
+
+Player.prototype.render = function() {
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
 
 
 // Now instantiate your objects.
@@ -40,7 +48,7 @@ let allEnemies = [];
 // Place the player object in a variable called player
 
 // start location of player
-let player = new Player(202, 0);
+let player = new Player(202, 404);
 
 
 // This listens for key presses and sends the keys to your
