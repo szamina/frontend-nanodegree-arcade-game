@@ -18,11 +18,20 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = this.x + (this.speed * dt);
-    if (this.x > 606) {
-      this.x = -150;
-    }
-};
+    this.x += this.speed * dt;
+        if (this.x > 606) {
+          this.x = -150;
+          this.speed = 100 + Math.floor(Math.random() * 222);
+        }
+
+        if (player.x < this.x + 80 &&
+               player.x + 80 > this.x &&
+               player.y < this.y + 60 &&
+               60 + player.y > this.y) {
+               player.x = 202;
+               player.y = 404;
+           }
+    };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -72,3 +81,7 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+function getRandom(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
